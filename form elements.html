@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.tauseefkhan.co</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .elements {
+            background-color: #eee;
+            list-style: none;
+            padding: 20px;
+            margin: 50px;
+            border-radius: 6px;
+        }
+
+        .elements li {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            padding: 5px 0;
+        }
+
+        .elements li label {
+            flex: 1;
+        }
+
+        .elements li input {
+            flex: 2;
+        }
+
+        body {
+            background-color: powderblue;
+            font-size: 20px;
+        }
+
+        h1 {
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .button input {
+            font-size: 16px;
+            border-radius: 7px;
+            padding: 5px;
+            font-weight: 600;
+            background-color: crimson;
+            color: white;
+            margin-top: 30px;
+            width: 90px;
+            border-color: crimson;
+        }
+
+        .button input:hover {
+            background-color: green;
+            transition: all 0.7s;
+            border-color: 2px solid red;
+            cursor: pointer;
+        }
+
+        .button {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fill Form for Contact</h1>
+    <form action="" name="aboutUser">
+
+        <ul class="elements">
+            <li>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name">
+            </li>
+            <li>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="Address">
+            </li>
+            <li>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="Email">
+            </li>
+            <li>
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" maxlength="10" name="Phone">
+            </li>
+            <div class="button">
+                <input type="submit">
+            </div>
+        </ul>
+
+    </form>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyy5NSBs8osAZiPjTh3kWPe-7pqwhrmjh_5zQBv0d-ts0D3huXdYeaL6Wds25LMWVxn/exec'
+        const form = document.forms['aboutUser']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thank you! your form is submitted successfully."))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
